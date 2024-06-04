@@ -1,20 +1,22 @@
 import React from 'react';
 import { ProfileOutlined, SafetyCertificateOutlined } from '@ant-design/icons';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
-import {LogTable} from '../../features/logs/index';
+import { LogTable } from '../../features/logs/index';
 
 const { Header, Content, Sider } = Layout;
 var data = [
-  {id : 1, name : "日志管理", icon : ProfileOutlined,
-  subMenus:[{
-    Id:100, name : "列表"
-  }]
+  {
+    id: 1, name: "日志管理", icon: ProfileOutlined,
+    subMenus: [{
+      Id: 100, name: "列表"
+    }]
   },
-  {id : 2, name : "安全管理", icon : SafetyCertificateOutlined,
-   subMenus: []
+  {
+    id: 2, name: "安全管理", icon: SafetyCertificateOutlined,
+    subMenus: []
   }];
 
-const headers = data.map((item)=>({key: item.id, label: item.name}));
+const headers = data.map((item) => ({ key: item.id, label: item.name }));
 
 const menus = data.map((item) => {
   return {
@@ -31,7 +33,7 @@ const menus = data.map((item) => {
 });
 
 const MainLayout = () => {
-  const {token: { colorBgContainer, borderRadiusLG }} = theme.useToken();
+  const { token: { colorBgContainer, borderRadiusLG } } = theme.useToken();
 
   return (
     <Layout>
@@ -81,7 +83,7 @@ const MainLayout = () => {
               margin: '16px 0',
             }}
           >
-          <Breadcrumb.Item>日志列表</Breadcrumb.Item>
+            <Breadcrumb.Item>日志列表</Breadcrumb.Item>
           </Breadcrumb>
           <Content
             style={{

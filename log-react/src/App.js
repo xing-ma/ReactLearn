@@ -1,4 +1,4 @@
-import {MainLayout} from './components/layout/index'
+import { MainLayout } from './components/layout/index'
 
 function App() {
   return <MainLayout />;

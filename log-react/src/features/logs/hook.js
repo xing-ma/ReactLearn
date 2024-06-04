@@ -1,34 +1,32 @@
 import { useState, useEffect } from 'react';
 import storage from '../../utils/storage'
 
-const initLogsData = () =>
-{
+const initLogsData = () => {
     var logs = storage.getLogsData() || [];
 
-    if(logs.length === 0)
-    {
+    if (logs.length === 0) {
         logs.push({
-            "id" : 1,
-            "name" : "暴富事件",
-            "date" : new Date().toLocaleString(),
-            "content" : "看到这条日志你将一夜暴富"
+            "id": 1,
+            "name": "暴富事件",
+            "date": new Date().toLocaleString(),
+            "content": "看到这条日志你将一夜暴富"
         });
     }
 
     return logs;
 }
 
-export const useAction= ()=> {
+export const useAction = () => {
 
     const [logsData, setLogsData] = useState(initLogsData());
-    
-    const addLog = (data)=> {
-        
+
+    const addLog = (data) => {
+
         var logs = [...logsData, {
-            "id" : logsData.length + 1,
-            "name" : data.name,
-            "date" : new Date().toLocaleString(),
-            "content" : data.content
+            "id": logsData.length + 1,
+            "name": data.name,
+            "date": new Date().toLocaleString(),
+            "content": data.content
         }];
 
         setLogsData(logs);
@@ -48,7 +46,7 @@ export const useAction= ()=> {
     }
 
     const deleteLog = (id) => {
-        
+
         var logs = logsData.filter(x => x.id !== id);
 
         setLogsData([...logs]);
@@ -56,12 +54,12 @@ export const useAction= ()=> {
         storage.setLogsData(logs);
     }
 
-    const deleteLogs = (ids) =>{
+    const deleteLogs = (ids) => {
         var logs = [];
 
-        logsData.forEach((item)=>{
-            
-            if(!ids.includes(item.id)){
+        logsData.forEach((item) => {
+
+            if (!ids.includes(item.id)) {
                 logs.push(item);
             }
         });
@@ -71,20 +69,18 @@ export const useAction= ()=> {
         storage.setLogsData(logs);
     }
 
-    const searchLogs = (keyword)=>{
+    const searchLogs = (keyword) => {
 
-        if(keyword)
-        {
+        if (keyword) {
             const regex = new RegExp(keyword, 'i');
 
             const filteredData = initLogsData().filter(item => {
                 return regex.test(item.name);
-              });
-    
-              setLogsData(filteredData);
+            });
+
+            setLogsData(filteredData);
         }
-        else
-        {
+        else {
             setLogsData(initLogsData());
         }
     }
