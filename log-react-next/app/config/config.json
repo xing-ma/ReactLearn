@@ -1,0 +1,11 @@
+{
+    "baseApi": "https://localhost:7175/",
+    "auth": {
+        "baseApi":"https://localhost:5001/",
+        "token_endpoint": "/connect/token",
+        "client_id": "client",
+        "client_secret": "secret",
+        "grant_type": "password",
+        "userInfo_endpoint":"/connect/userinfo"
+    }
+}
