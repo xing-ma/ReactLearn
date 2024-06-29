@@ -1,6 +1,5 @@
 'use client'
 import { useState, useEffect } from 'react';
-import { signIn } from "../../../auth";
 
 const Home: React.FC = () => {
   useEffect(() => {
