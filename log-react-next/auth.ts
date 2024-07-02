@@ -70,7 +70,7 @@ const config = {
             return session;
         },
     },
-    secret: "TrB5FcO2Ane/E1cqa8wYkVS1L2yo9qdk76LC4gHQzHs="
+     //secret: process.env.AUTH_SECRET
 } satisfies NextAuthConfig
 
 export const { auth, signIn, signOut } = NextAuth(config);
