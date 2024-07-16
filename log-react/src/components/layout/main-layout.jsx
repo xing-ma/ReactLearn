@@ -1,24 +1,12 @@
-import React from 'react';
-import { ProfileOutlined, SafetyCertificateOutlined } from '@ant-design/icons';
+import React, { useEffect } from 'react';
 import { Breadcrumb, Layout, Menu, theme } from 'antd';
-import { LogTable } from '../../features/logs/index';
+import { LogTable } from '../../features/index';
+import { Outlet, NavLink, useLoaderData, useNavigation, useRouteError } from "react-router-dom";
+import { routerData } from '../../utils/router';
 
 const { Header, Content, Sider } = Layout;
-var data = [
-  {
-    id: 1, name: "日志管理", icon: ProfileOutlined,
-    subMenus: [{
-      Id: 100, name: "列表"
-    }]
-  },
-  {
-    id: 2, name: "安全管理", icon: SafetyCertificateOutlined,
-    subMenus: []
-  }];
 
-const headers = data.map((item) => ({ key: item.id, label: item.name }));
-
-const menus = data.map((item) => {
+const menus = routerData.map((item) => {
   return {
     key: item.id,
     icon: React.createElement(item.icon),
@@ -27,13 +15,43 @@ const menus = data.map((item) => {
       return {
         key: subItem.id,
         label: subItem.name,
-      };
+        label: <NavLink
+          to={subItem.linkTo}
+          className={({ isActive, isPending }) =>
+            isActive
+              ? "active"
+              : isPending
+                ? "pending"
+                : ""
+          }>{subItem.name}</NavLink>,
+        children: subItem.subMenus?.map((childrenSubItem) => {
+          return {
+            key: childrenSubItem.id,
+            label: childrenSubItem.name,
+            label: <NavLink
+              to={childrenSubItem.linkTo}
+              className={({ isActive, isPending }) =>
+                isActive
+                  ? "active"
+                  : isPending
+                    ? "pending"
+                    : ""
+              }>{childrenSubItem.name}</NavLink>
+          }
+        })
+      }
     }),
   };
 });
 
 const MainLayout = () => {
   const { token: { colorBgContainer, borderRadiusLG } } = theme.useToken();
+
+  // 输出 root router 的 loader 数据
+  const data = useLoaderData();
+  console.log("main layout useLoaderData", data);
+
+  const navigation = useNavigation();
 
   return (
     <Layout>
@@ -43,21 +61,10 @@ const MainLayout = () => {
           alignItems: 'center',
         }}
       >
-        <div className="demo-logo" />
-        <Menu
-          theme="dark"
-          mode="horizontal"
-          defaultSelectedKeys={['1']}
-          items={headers}
-          style={{
-            flex: 1,
-            minWidth: 0,
-          }}
-        />
       </Header>
       <Layout>
         <Sider
-          width={200}
+          width={320}
           style={{
             background: colorBgContainer,
           }}
@@ -94,7 +101,13 @@ const MainLayout = () => {
               borderRadius: borderRadiusLG,
             }}
           >
-            <LogTable />
+            <div
+              className={
+                navigation.state === "loading" ? "loading" : ""
+              }
+            >
+            </div>
+            <Outlet />
           </Content>
         </Layout>
       </Layout>
@@ -103,3 +116,21 @@ const MainLayout = () => {
 };
 
 export default MainLayout;
+
+export const MainLoader = () => {
+  return ["main"];
+}
+
+export const MainError = () => {
+
+  const error = useRouteError();
+  console.error("main layout router error:", error);
+
+  return (
+    <div>
+      This is main errror
+      <h2>{error.statusText || error.message}</h2>
+      <Outlet />
+    </div>
+  )
+}

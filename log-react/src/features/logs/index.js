@@ -1,1 +1,0 @@
-export {default as LogTable} from './components/log-table';
