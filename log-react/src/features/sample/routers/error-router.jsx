@@ -5,7 +5,7 @@ export const ErrorRouter = () => {
     
     return (
         <>
-            <h2>hello world error router</h2>
+            <h2>显示Error Routery页面</h2>
         </>
     )
 };

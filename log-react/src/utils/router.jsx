@@ -62,6 +62,16 @@ export const routerData = [
                     Id: 304,
                     name: "Loader-加载数据",
                     linkTo: "sample/router/loader-router",
+                },
+                {
+                    Id: 305,
+                    name: "Action-提交数据",
+                    linkTo: "sample/router/action",
+                },
+                {
+                    Id: 306,
+                    name: "动态路由",
+                    linkTo: "sample/router/dynamic",
                 }
             ]
         },

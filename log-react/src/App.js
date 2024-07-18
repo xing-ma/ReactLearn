@@ -1,7 +1,7 @@
 import { MainLayout, MainLoader, MainError } from './components/layout/index';
 import { RouterProvider, createBrowserRouter, Outlet } from "react-router-dom";
 import "./index.css";
-import { LogTable, Account, Profile, Permission} from './features/index';
+import { LogTable, Account, Profile, Permission } from './features/index';
 import {
   ErrorRouter,
   ErrorRouterLoaderWithoutErrorElement,
@@ -10,7 +10,11 @@ import {
   LoaderRouter,
   LoaderRouterLoader,
   State,
-  Effect
+  Effect,
+  RouterAction,
+  ActionLoader,
+  DynamicRouter,
+  DynamicLoader
 } from './features/sample/index';
 
 function App() {
@@ -68,6 +72,23 @@ function App() {
                   element: <LoaderRouter />,
                   loader: LoaderRouterLoader,
                 },
+                {
+                  path: "action",
+                  loader: ActionLoader,
+                  action: async ({ params, request }) => {
+                    console.log("执行action提交");
+                    console.log("params:", params);
+                    let data = Object.fromEntries(await request.formData());
+                    console.log("formData:", data);
+                    return [data];
+                  },
+                  element: <RouterAction />,
+                },
+                {
+                  path: "dynamic?/:id",
+                  loader: DynamicLoader,
+                  element: <DynamicRouter />
+                }
               ]
             },
             {
