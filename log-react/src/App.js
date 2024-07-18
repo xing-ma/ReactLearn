@@ -76,10 +76,9 @@ function App() {
                   path: "action",
                   loader: ActionLoader,
                   action: async ({ params, request }) => {
-                    console.log("执行action提交");
-                    console.log("params:", params);
+
                     let data = Object.fromEntries(await request.formData());
-                    console.log("formData:", data);
+                    console.log("执行action提交,params:", params, "formData:", data);
                     return [data];
                   },
                   element: <RouterAction />,
