@@ -8,6 +8,9 @@ const Home: React.FC = () => {
       <Button>
         <Link href="/backend">前去后台管理系统</Link>
       </Button>
+      <Button>
+        <Link href="/sample">前去示例</Link>
+      </Button>
     </Flex>
   );
 };
