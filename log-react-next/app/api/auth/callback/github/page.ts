@@ -62,6 +62,7 @@ export default async function Callback({
         console.error("Error fetching data:", error);
     };
 
-    console.log("redirect url:", `/sample/auth?userName=${userName}`);
-    redirect(`/sample/auth?userName=${userName}`);
+    const redirectUrl = `/sample/auth?userName=${encodeURIComponent(userName)}`;
+    console.log("redirect url:", redirectUrl);
+    redirect(redirectUrl);
 }
