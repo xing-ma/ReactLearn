@@ -27,7 +27,9 @@ export default async function Callback({
     //     console.error("Error fetching data:", error);
     // });
 
-    console.log("url:",`https://github.com/login/oauth/access_token?client_id=${process.env.AUTH_GITHUB_ID}&client_secret=${process.env.AUTH_GITHUB_SECRET}&code=${searchParams.code}&redirect_uri=http://localhost:3000/api/auth/callback/github`);
+    let userName = "未登录";
+
+    console.log("url:", `https://github.com/login/oauth/access_token?client_id=${process.env.AUTH_GITHUB_ID}&client_secret=${process.env.AUTH_GITHUB_SECRET}&code=${searchParams.code}&redirect_uri=http://localhost:3000/api/auth/callback/github`);
     try {
         const accessTokenRes = await fetch(`https://github.com/login/oauth/access_token?client_id=${process.env.AUTH_GITHUB_ID}&client_secret=${process.env.AUTH_GITHUB_SECRET}&code=${searchParams.code}&redirect_uri=http://localhost:3000/api/auth/callback/github`, {
             method: "POST",
@@ -54,8 +56,12 @@ export default async function Callback({
 
         console.log("user data:", userData);
 
-        redirect(`/sample/auth?userName=${userData.login}`);
+        userName = userData.login;
+
     } catch (error) {
         console.error("Error fetching data:", error);
     };
+
+    console.log("redirect url:", `/sample/auth?userName=${userName}`);
+    redirect(`/sample/auth?userName=${userName}`);
 }
