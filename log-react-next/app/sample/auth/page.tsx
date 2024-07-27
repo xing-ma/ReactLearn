@@ -12,7 +12,7 @@ export default async function SignInPage({
       <h1>当前登录用户：{searchParams.userName}</h1>
       <div className="flex flex-col gap-2">
         {Object.values(providerMap).map((provider) => (
-          <form action={async () => {
+          <form key={provider.id} action={async () => {
             "use server"
             await signIn(provider.id);
           }}

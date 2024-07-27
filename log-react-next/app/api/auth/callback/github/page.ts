@@ -62,6 +62,7 @@ export default async function Callback({
         console.error("Error fetching data:", error);
     };
 
+    // 使用 encodeURIComponent 编码url参数，避免 userName 是中文的时候跳转出错
     const redirectUrl = `/sample/auth?userName=${encodeURIComponent(userName)}`;
     console.log("redirect url:", redirectUrl);
     redirect(redirectUrl);

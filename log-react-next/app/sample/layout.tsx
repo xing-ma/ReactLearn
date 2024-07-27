@@ -18,6 +18,9 @@ const SampleLayout = ({ children }: React.PropsWithChildren) => {
                         <Menu.Item>
                             <Link href="/sample/auth">Auth</Link>
                         </Menu.Item>
+                        <Menu.Item>
+                            <Link href="/sample/env">Environment Variables</Link>
+                        </Menu.Item>
                     </Menu>
                 </Layout.Sider>
                 <Layout>
