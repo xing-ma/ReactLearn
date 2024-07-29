@@ -32,12 +32,17 @@ const SampleLayout = ({ children }: React.PropsWithChildren) => {
                 {
                     key: "3-1",
                     icon: "",
-                    label: <Link href="/sample/conventions/not-found">Not found</Link>,
+                    label: <Link href="/sample/conventions/not_found">Not found</Link>,
                 },
                 {
                     key: "3-2",
                     icon: "",
-                    label: <Link href="/sample/conventions/error">Error</Link>,
+                    label: <Link href="/sample/conventions/custom_error">Custom Error</Link>,
+                },
+                {
+                    key: "3-3",
+                    icon: "",
+                    label: <Link href="/sample/conventions/global_error">Global Error</Link>,
                 }
             ]
         }
