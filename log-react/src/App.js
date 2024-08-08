@@ -15,7 +15,8 @@ import {
   ActionLoader,
   DynamicRouter,
   DynamicLoader,
-  Reducer
+  Reducer,
+  Context
 } from './features/sample/index';
 
 function App() {
@@ -106,6 +107,10 @@ function App() {
                 {
                   path: "reducer",
                   element: <Reducer />
+                },
+                {
+                  path: "context",
+                  element: <Context />
                 }
               ]
             }

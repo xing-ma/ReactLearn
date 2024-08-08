@@ -94,6 +94,11 @@ export const routerData = [
                     Id: 353,
                     name: "Reducer",
                     linkTo: "sample/hook/reducer",
+                },
+                {
+                    Id: 354,
+                    name: "Context",
+                    linkTo: "sample/hook/context",
                 }
             ]
         }]
