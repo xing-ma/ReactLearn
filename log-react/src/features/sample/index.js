@@ -4,3 +4,4 @@ export * from './hooks/state';
 export * from './hooks/effect';
 export * from './routers/action';
 export * from './routers/dynamic';
+export * from './hooks/reducer';

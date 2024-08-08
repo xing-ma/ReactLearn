@@ -89,6 +89,11 @@ export const routerData = [
                     Id: 352,
                     name: "Effect",
                     linkTo: "sample/hook/effect",
+                },
+                {
+                    Id: 353,
+                    name: "Reducer",
+                    linkTo: "sample/hook/reducer",
                 }
             ]
         }]

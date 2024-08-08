@@ -14,7 +14,8 @@ import {
   RouterAction,
   ActionLoader,
   DynamicRouter,
-  DynamicLoader
+  DynamicLoader,
+  Reducer
 } from './features/sample/index';
 
 function App() {
@@ -101,6 +102,10 @@ function App() {
                 {
                   path: "effect",
                   element: <Effect />
+                },
+                {
+                  path: "reducer",
+                  element: <Reducer />
                 }
               ]
             }
