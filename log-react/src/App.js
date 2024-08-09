@@ -16,7 +16,8 @@ import {
   DynamicRouter,
   DynamicLoader,
   Reducer,
-  Context
+  Context,
+  Ref
 } from './features/sample/index';
 
 function App() {
@@ -111,6 +112,10 @@ function App() {
                 {
                   path: "context",
                   element: <Context />
+                },
+                {
+                  path: "ref",
+                  element: <Ref />
                 }
               ]
             }
